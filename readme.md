@@ -39,6 +39,6 @@ Also, the `find` method has been simplified. There are two options (versus 7):
 	# or
 	User.find {...}, {options}, (err, users) ->
 
-Use the options to specify specific fields to retrieve. For example: `{fields: {...}, literal: true.}`
+Use the options to specify specific fields to retrieve (as well as other options, like `sort` and `limit`). For example: `{fields: {...}, literal: true.}`
 
 By default `find` will load all found documents into memory. To retrieve the MongoDB cursor instead, specify `{cursor: true}` in the options.
