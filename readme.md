@@ -24,7 +24,7 @@ Define your classes:
 The 2nd parameter is the function used to instantiate your object when getting them from the MongoDB. You could pre-initialize anything here. An optional 3rd options parameter can be specified:
 
 	class User
-		mongolight.extend @, -> new User(), {name: 'people'}
+		mongolight.extend @, {name: 'people'}, -> new User()
 
 The supported values for this 3rd parameter:
   
