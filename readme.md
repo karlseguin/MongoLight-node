@@ -1,5 +1,5 @@
 # THIS IS NOT DONE
-This is about 10% complete. No package nor the /lib/*.js files will be available until it is
+This is about 50% complete. No package nor the /lib/*.js files will be available until it is
 
 # MongoLight for node.js
 A lightweight MongoDB mapper for node.js

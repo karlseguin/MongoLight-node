@@ -50,12 +50,28 @@ class MongoLight
         Helper.handleSingleLiteral(err, literal, options, entity, callback)
 
   @remove: (selector, options, callback) ->
+    [options, callback] = Helper.optionalOptions(options, callback)
+    this.collection (err, collection) ->
+      return callback(err, null) if err?
+      collection.remove(selector, options, callback)
 
   @insert: (document, options, callback) ->
+    [options, callback] = Helper.optionalOptions(options, callback)
+    this.collection (err, collection) ->
+      return callback(err, null) if err?
+      collection.insert(document, options, callback)
 
   @update: (selector, document, options, callback) ->
+    [options, callback] = Helper.optionalOptions(options, callback)
+    this.collection (err, collection) ->
+      return callback(err, null) if err?
+      collection.update(selector, document, options, callback)
 
   @count: (selector, callback) ->
+    [selector, callback] = Helper.optionalOptions(selector, callback)
+    this.collection (err, collection) ->
+      return callback(err, null) if err?
+      collection.count(selector, callback)
 
   @collection: (callback) ->
     this._mongolight.db.collection this._mongolight.collectionName, callback
