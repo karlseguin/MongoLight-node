@@ -19,14 +19,14 @@ First you have to configure mongolight with your MongoDB connection:
 Define your classes:
 
 	class User
-		mongolight.extend @, -> new User()
+		mongolight.extend @
 
-The 2nd parameter is the function used to instantiate your object when getting them from the MongoDB. You could pre-initialize anything here. An optional 3rd options parameter can be specified:
+An optional 2nd options parameter can be specified:
 
 	class User
-		mongolight.extend @, {name: 'people'}, -> new User()
+		mongolight.extend @, {name: 'people'}
 
-The supported values for this 3rd parameter:
+The supported values for options are:
   
 * name: what to name this collection (by default it'll be inferred from the class name)
 

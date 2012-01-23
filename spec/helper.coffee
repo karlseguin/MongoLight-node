@@ -5,7 +5,7 @@ db = new mongo.Db('mongolight_tests', new mongo.Server('127.0.0.1', 27017, {}))
 mongolight.configure(db)
 
 class User
-  mongolight.extend @, -> new User()
+  mongolight.extend @
 
   doesLike: (value) ->
     for like in @likes

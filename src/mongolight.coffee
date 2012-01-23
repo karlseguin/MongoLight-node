@@ -4,15 +4,10 @@ objectId = require('mongodb').BSONPure.ObjectID
 class MongoLight
   @configure: (@db) ->
 
-  @extend: (entity, options, creator) ->
-    unless creator?
-      creator = options
-      options = {}
-      
+  @extend: (entity, options) ->
     entity['_mongolight'] =
       db: @db
-      creator: creator
-      collectionName: options.name || lingo.pluralize(entity.name.toLowerCase())
+      collectionName: options?.name || lingo.pluralize(entity.name.toLowerCase())
 
     for key, value of this when key not in ['configure', 'extend', 'db']
       entity[key] = value unless entity[key]?
@@ -70,7 +65,7 @@ class Helper
   @objectIdPattern = /^[0-9a-fA-F]{24}$/
 
   @createInstance: (entity, literal) ->
-    instance = entity._mongolight.creator()
+    instance = new entity()
     for key, value of literal
       instance[key] = value
     return instance
